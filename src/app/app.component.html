@@ -1,0 +1,38 @@
+<div #navbarDiv>
+  <app-header
+    (runBoardEventEmitter)="runBoard()"
+    (clearBoardEventEmitter)="clearBoard()"
+    (clearWallEventEmitter)="clearWall()"
+    (clearPathEventEmitter)="clearPath()"
+    (createMazeEventEmitter)="createMaze($event)"
+    (startButtonEventEmitter)="changeAlgorithm($event)"
+    (adjustSpeedEventEmitter)="adjustSpeed($event)"
+    (addBombEventEmitter)="addBomb()"
+    (removeBombEventEmitter)="removeBomb()"
+    (resetEventEmitter)="reset()"
+    [isAddedBomb]="isAddedBomb"
+    [isDisableAddBomb]="isDisableAddBomb"
+    [inProgressVisualize]="board.buttonsOn"
+  ></app-header>
+</div>
+
+<app-tutorial></app-tutorial>
+
+<div id="mainGrid" [className]="boardAnimationColor">
+  <div #boardDescription>
+    <app-board-description-component
+      [algorithm]="board.currentAlgorithm"
+      [algorithmDescription]="algorithmDescription"
+      [isDisableAddBomb]="isDisableAddBomb"
+      [isDisableWeightNode]="isDisableWeightNode"
+      (changeColorEventEmitter)="changeColorEventEmitter($event)"
+    ></app-board-description-component>
+  </div>
+  <app-board-component
+    [board]="board"
+    (mousedownEventEmitter)="mousedown($event)"
+    (mouseupEventEmitter)="mouseup($event)"
+    (mouseenterEventEmitter)="mouseenter($event)"
+    (mouseleaveEventEmitter)="mouseleave($event)"
+  ></app-board-component>
+</div>

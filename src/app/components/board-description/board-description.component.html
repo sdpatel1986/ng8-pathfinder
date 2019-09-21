@@ -1,0 +1,65 @@
+<div id="mainText">
+  <ul>
+    <li>
+      <div class="content start"></div>
+      Start Node
+    </li>
+    <li>
+      <div class="content target"></div>
+      Target Node
+    </li>
+    <li id="bombLegend" [className]="isDisableAddBomb ? 'strikethrough' : ''">
+      <div class="content object"></div>
+      Bomb Node
+    </li>
+    <li
+      id="weightLegend"
+      [className]="isDisableWeightNode ? 'strikethrough' : ''"
+    >
+      <div class="content borderlessWeight"></div>
+      Weight Node
+    </li>
+    <li>
+      <div class="content unvisited"></div>
+
+      <p class="description">Unvisited Node</p>
+    </li>
+    <li>
+      <app-color-picker
+        (changePathColorEmitter)="onChangePathColor($event)"
+        [name]="'visitedNodeColor'"
+        [className]="'visited'"
+        [defaultColor]="'#62cde3'"
+      ></app-color-picker>
+      <app-color-picker
+        (changePathColorEmitter)="onChangePathColor($event)"
+        [name]="'visitedObjectNodeColor'"
+        [className]="'visitedobject'"
+        [defaultColor]="'#c572ff'"
+      ></app-color-picker>
+      Visited Nodes
+    </li>
+    <li>
+      <app-color-picker
+        (changePathColorEmitter)="onChangePathColor($event)"
+        [name]="'shortestPathColor'"
+        [className]="'shortest-path'"
+        [defaultColor]="'#fcfe6b'"
+      ></app-color-picker>
+      <p class="description">Shortest-path Node</p>
+    </li>
+    <li>
+      <app-color-picker
+        (changePathColorEmitter)="onChangePathColor($event)"
+        [name]="'wallColor'"
+        [className]="'wall'"
+        [defaultColor]="'#0C3547'"
+      ></app-color-picker>
+      Wall Node
+    </li>
+  </ul>
+</div>
+<div
+  id="algorithmDescriptor"
+  [innerHTML]="algorithmDescription || 'Pick an algorithm and visualize it!'"
+></div>

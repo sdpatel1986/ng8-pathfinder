@@ -1,0 +1,325 @@
+@mixin changeColor($color) {
+  $animation-name: changeColor;
+
+  @keyframes #{$animation-name} {
+    0% {
+      transform: scale(0.6);
+      background-color: $color;
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: $color;
+    }
+    100% {
+      transform: scale(1);
+      background-color: $color;
+    }
+  }
+
+  .visited {
+    animation-name: $animation-name !important;
+  }
+}
+
+@mixin animate_bg($color, $class) {
+  $animation-name: #{$class};
+
+  @keyframes #{$animation-name} {
+    0% {
+      transform: scale(0.6);
+      background-color: $color;
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: $color;
+    }
+    100% {
+      transform: scale(1);
+      background-color: $color;
+    }
+  }
+
+  .shortest-path-up {
+    animation-name: $animation-name !important;
+  }
+  .shortest-path-down {
+    animation-name: $animation-name !important;
+  }
+  .shortest-path-right {
+    animation-name: $animation-name !important;
+  }
+  .shortest-path-left {
+    animation-name: $animation-name !important;
+  }
+  .shortest-path {
+    background-color: $color;
+    &.weight {
+      background-color: $color;
+    }
+  }
+  .instantshortest-path {
+    background-color: $color;
+    &.weight {
+      background-color: $color;
+    }
+  }
+
+  .instantshortest-path-up {
+    background-color: $color;
+  }
+
+  .instantshortest-path-down {
+    background-color: $color;
+  }
+
+  .instantshortest-path-right {
+    background-color: $color;
+  }
+
+  .instantshortest-path-left {
+    background-color: $color;
+  }
+
+  .shortest-path-unweighted {
+    background-color: $color;
+  }
+}
+
+:host ::ng-deep .shortest-path__default {
+  @include animate_bg(#fcfe6b, triangletwoDefault);
+}
+
+:host ::ng-deep .shortest-path__green {
+  @include animate_bg(#009c0df5, triangletwoGreen);
+}
+
+:host ::ng-deep .shortest-path__yellow {
+  @include animate_bg(#ffe70e, triangletwoYellow);
+}
+
+:host ::ng-deep .shortest-path__orange {
+  @include animate_bg(#da6900, triangletwoOrange);
+}
+
+:host ::ng-deep .shortest-path__red {
+  @include animate_bg(#c50000, triangletwoRed);
+}
+
+:host ::ng-deep .shortest-path__purple {
+  @include animate_bg(#8b0085, triangletwoPurple);
+}
+
+:host ::ng-deep .shortest-path__blue {
+  @include animate_bg(#001bb6, triangletwoBlue);
+}
+
+@mixin animate_visitedobject($color, $class) {
+  $animation-name: #{$class};
+
+  @keyframes #{$animation-name} {
+    0% {
+      transform: scale(0.3);
+      background-color: rgba(41, 4, 24, 0.75);
+      border-radius: 100%;
+    }
+
+    50% {
+      background-color: rgba(97, 0, 20, 0.75);
+    }
+
+    75% {
+      transform: scale(1.2);
+      background-color: rgba(216, 5, 141, 0.75);
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: $color;
+    }
+  }
+
+  .visitedObjectNode {
+    animation-name: $animation-name !important;
+  }
+  .instantvisitedobject {
+    background-color: $color;
+    &.weight {
+      background-color: $color;
+    }
+  }
+  .visitedobject {
+    animation-name: $animation-name !important;
+    background-color: $color;
+    &.weight {
+      animation-name: $animation-name !important;
+      background-color: $color;
+    }
+  }
+}
+
+:host ::ng-deep .visitedobject__default {
+  @include animate_visitedobject(#c572ff, visitedObjectAnimationDefault);
+}
+
+:host ::ng-deep .visitedobject__green {
+  @include animate_visitedobject(#009c0df5, visitedObjectAnimationGreen);
+}
+
+:host ::ng-deep .visitedobject__yellow {
+  @include animate_visitedobject(#ffe70e, visitedObjectAnimationYellow);
+}
+
+:host ::ng-deep .visitedobject__orange {
+  @include animate_visitedobject(#da6900, visitedObjectAnimationOrange);
+}
+
+:host ::ng-deep .visitedobject__red {
+  @include animate_visitedobject(#c50000, visitedObjectAnimationRed);
+}
+
+:host ::ng-deep .visitedobject__purple {
+  @include animate_visitedobject(#8b0085, visitedObjectAnimationPurple);
+}
+
+:host ::ng-deep .visitedobject__blue {
+  @include animate_visitedobject(#001bb6, visitedObjectAnimationBlue);
+}
+
+@mixin animate_visited($color, $class) {
+  $animation-name: #{$class};
+
+  @keyframes #{$animation-name} {
+    0% {
+      transform: scale(0.3);
+      background-color: rgba(0, 0, 66, 0.75);
+      border-radius: 100%;
+    }
+
+    50% {
+      background-color: rgba(17, 104, 217, 0.75);
+    }
+
+    75% {
+      transform: scale(1.2);
+      background-color: rgba(0, 217, 159, 0.75);
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: $color;
+    }
+  }
+  .visited {
+    background-color: $color;
+    animation-name: $animation-name !important;
+    &.weight {
+      animation-name: $animation-name !important;
+      background-color: $color;
+    }
+  }
+
+  .instantvisited {
+    background-color: $color;
+    animation-name: $animation-name !important;
+    &.weight {
+      animation-name: $animation-name !important;
+      background-color: $color;
+    }
+  }
+  .visited.content {
+    animation: none !important;
+  }
+}
+
+:host ::ng-deep .visited__default {
+  @include animate_visited(#62cde3, visitedAnimationDefault);
+}
+
+:host ::ng-deep .visited__green {
+  @include animate_visited(#009c0df5, visitedAnimationGreen);
+}
+
+:host ::ng-deep .visited__yellow {
+  @include animate_visited(#ffe70e, visitedAnimationYellow);
+}
+
+:host ::ng-deep .visited__orange {
+  @include animate_visited(#da6900, visitedAnimationOrange);
+}
+
+:host ::ng-deep .visited__red {
+  @include animate_visited(#c50000, visitedAnimationRed);
+}
+
+:host ::ng-deep .visited__purple {
+  @include animate_visited(#8b0085, visitedAnimationPurple);
+}
+
+:host ::ng-deep .visited__blue {
+  @include animate_visited(#001bb6, visitedAnimationBlue);
+}
+
+:host ::ng-deep .visited.content {
+  animation: none !important;
+}
+
+:host ::ng-deep .visitedobject.content {
+  animation: none !important;
+}
+
+@mixin animate_wall($color, $class) {
+  $animation-name: #{$class};
+
+  @keyframes #{$animation-name} {
+    0% {
+      transform: scale(0.3);
+      background-color: $color;
+    }
+
+    50% {
+      transform: scale(1.2);
+      background-color: $color;
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: $color;
+    }
+  }
+  .wall {
+    background-color: $color;
+    animation-name: $animation-name !important;
+  }
+}
+
+:host ::ng-deep .wall__default {
+  @include animate_wall(#0c3547, wallDefault);
+}
+
+:host ::ng-deep .wall__green {
+  @include animate_wall(#009c0df5, wallGreen);
+}
+
+:host ::ng-deep .wall__yellow {
+  @include animate_wall(#ffe70e, wallYellow);
+}
+
+:host ::ng-deep .wall__orange {
+  @include animate_wall(#da6900, wallOrange);
+}
+
+:host ::ng-deep .wall__red {
+  @include animate_wall(#c50000, wallRed);
+}
+
+:host ::ng-deep .wall__purple {
+  @include animate_wall(#8b0085, wallPurple);
+}
+
+:host ::ng-deep .wall__blue {
+  @include animate_wall(#001bb6, wallBlue);
+}
+
+:host ::ng-deep .wall.content {
+  animation: none !important;
+}

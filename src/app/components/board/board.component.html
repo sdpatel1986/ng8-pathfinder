@@ -1,0 +1,13 @@
+<table id="board">
+  <tr *ngFor="let rows of board.boardArray">
+    <td
+      *ngFor="let item of rows"
+      id="{{ item.id }}"
+      class="{{ item.className }}"
+      (mousedown)="!board.buttonsOn && mousedown(item)"
+      (mouseup)="!board.buttonsOn && mouseup(item)"
+      (mouseenter)="!board.buttonsOn && mouseenter(item)"
+      (mouseleave)="!board.buttonsOn && mouseleave(item)"
+    ></td>
+  </tr>
+</table>

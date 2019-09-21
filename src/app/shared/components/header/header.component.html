@@ -1,0 +1,238 @@
+<div id="navbarDiv">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a id="refreshButton" class="navbar-brand" href="/"
+          >Pathfinding Visualizer</a
+        >
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+            >Algorithm:
+            <div class="algorithm-name">{{ selectedAlgorithmName }}</div>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonDijkstra"
+            >
+              <a (click)="changeAlgorithm(ALGORITHMS.DIJIKSTRA)" href="#"
+                >Dijkstra's Algorithm</a
+              >
+            </li>
+            <li [className]="inProgressVisualize ? 'disabledA' : ''">
+              <a
+                (click)="
+                  changeAlgorithm(
+                    ALGORITHMS.A_STAR,
+                    HEURISTICS.POWERED_MANHATTAN_DISTANCE
+                  )
+                "
+                href="#"
+                >A* Search</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonGreedy"
+            >
+              <a (click)="changeAlgorithm(ALGORITHMS.GREEDY)" href="#"
+                >Greedy Best-first Search</a
+              >
+            </li>
+            <li [className]="inProgressVisualize ? 'disabledA' : ''">
+              <a
+                (click)="
+                  changeAlgorithm(ALGORITHMS.CLA, HEURISTICS.MANHATTAN_DISTANCE)
+                "
+                href="#"
+                >Swarm Algorithm</a
+              >
+            </li>
+            <li [className]="inProgressVisualize ? 'disabledA' : ''">
+              <a
+                (click)="
+                  changeAlgorithm(
+                    ALGORITHMS.CLA,
+                    HEURISTICS.EXTRA_MANHATTAN_DISTANCE
+                  )
+                "
+                href="#"
+                >Convergent Swarm Algorithm</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonBidirectional"
+            >
+              <a
+                (click)="
+                  changeAlgorithm(
+                    ALGORITHMS.BIDIRECTIONAL,
+                    HEURISTICS.MANHATTAN_DISTANCE
+                  )
+                "
+                href="#"
+                >Bidirectional Swarm Algorithm</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonBFS"
+            >
+              <a (click)="changeAlgorithm(ALGORITHMS.BFS)" href="#"
+                >Breadth-first Search</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonDFS"
+            >
+              <a (click)="changeAlgorithm(ALGORITHMS.DFS)" href="#"
+                >Depth-first Search</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+            >Mazes &amp; Patterns
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonCreateMazeTwo"
+            >
+              <a href="#" (click)="createMaze(MAZE_TYPES.RECURSIVE_DIVISION)"
+                >Recursive Division</a
+              >
+            </li>
+            <li [className]="inProgressVisualize ? 'disabledA' : ''">
+              <a
+                href="#"
+                (click)="createMaze(MAZE_TYPES.RECURSIVE_DIVISION_VERTICAL)"
+                >Recursive Division (vertical skew)</a
+              >
+            </li>
+            <li [className]="inProgressVisualize ? 'disabledA' : ''">
+              <a
+                href="#"
+                (click)="createMaze(MAZE_TYPES.RECURSIVE_DIVISION_HORIZONTAL)"
+                >Recursive Division (horizontal skew)</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonCreateMazeOne"
+            >
+              <a href="#" (click)="createMaze(MAZE_TYPES.BASIC_RANDOM)"
+                >Basic Random Maze</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startButtonCreateMazeWeights"
+            >
+              <a href="#" (click)="createMaze(MAZE_TYPES.BASIC_WEIGHT)"
+                >Basic Weight Maze</a
+              >
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="startStairDemonstration"
+            >
+              <a href="#" (click)="createMaze(MAZE_TYPES.SIMPLE_STAIR)"
+                >Simple Stair Pattern</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li
+          (click)="addBomb()"
+          *ngIf="!isAddedBomb"
+          [className]="
+            inProgressVisualize || isDisableAddBomb ? 'disabledA' : ''
+          "
+        >
+          <a href="#">Add Bomb</a>
+        </li>
+        <li
+          [className]="inProgressVisualize ? 'disabledA' : ''"
+          (click)="removeBomb()"
+          *ngIf="isAddedBomb"
+        >
+          <a href="#">Remove Bomb</a>
+        </li>
+        <li id="startButtonStart">
+          <button
+            id="actualStartButton"
+            class="btn btn-default navbar-btn"
+            type="button"
+            (click)="runBoard()"
+            [ngStyle]="
+              inProgressVisualize && {
+                'background-color': 'rgb(185, 15, 15)',
+                cursor: 'not-allowed'
+              }
+            "
+          >
+            Visualize!
+          </button>
+        </li>
+        <li
+          [className]="inProgressVisualize ? 'disabledA' : ''"
+          id="startButtonClearBoard"
+        >
+          <a href="#" (click)="clearBoard()">Clear Board</a>
+        </li>
+        <li
+          [className]="inProgressVisualize ? 'disabledA' : ''"
+          id="startButtonClearWalls"
+        >
+          <a href="#" (click)="clearWall()">Clear Walls &amp; Weights</a>
+        </li>
+        <li [className]="inProgressVisualize ? 'disabledA' : ''">
+          <a href="#" (click)="clearPath()">Clear Path</a>
+        </li>
+        <li class="dropdown">
+          <a
+            id="adjustSpeed"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            >Speed:
+            {{ getSelectedSpeedCapitalize() }}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              (click)="adjustSpeedFast()"
+            >
+              <a href="#">Fast</a>
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              (click)="adjustSpeedAverage()"
+            >
+              <a href="#">Average</a>
+            </li>
+            <li
+              [className]="inProgressVisualize ? 'disabledA' : ''"
+              id="adjustSlow"
+              (click)="adjustSpeedSlow()"
+            >
+              <a href="#">Slow</a>
+            </li>
+          </ul>
+        </li>
+        <li (click)="reset()">
+          <a href="#">Reset</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

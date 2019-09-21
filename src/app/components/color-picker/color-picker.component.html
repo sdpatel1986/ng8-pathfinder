@@ -1,0 +1,35 @@
+<div class="color-picker-container">
+  <a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <div [className]="className + ' content'"></div>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu color-dropdown">
+    <li id="green" (click)="onChangePathColor(name, 'default')">
+      <a
+        href="#"
+        [ngStyle]="{
+          background: defaultColor
+        }"
+      ></a>
+    </li>
+    <li id="yellow" (click)="onChangePathColor(name, 'yellow')">
+      <a href="#" style="background-color: #ffe70e; "></a>
+    </li>
+    <li
+      id="orange"
+      class="last-item"
+      (click)="onChangePathColor(name, 'orange')"
+    >
+      <a href="#" style="background-color: #da6900; "></a>
+    </li>
+    <li id="red" (click)="onChangePathColor(name, 'red')">
+      <a href="#" style="background-color: #c50000; "></a>
+    </li>
+    <li id="purple" (click)="onChangePathColor(name, 'purple')">
+      <a href="#" style="background-color: #8b0085; "></a>
+    </li>
+    <li id="blue" class="last-item" (click)="onChangePathColor(name, 'blue')">
+      <a href="#" style="background-color: #001bb6; "></a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,13 @@
+:host ::ng-deep .color-picker-container {
+  .dropdown-toggle .caret {
+    margin: 0 !important;
+  }
+  .color-dropdown {
+    min-width: 50px !important;
+    margin: 0;
+    li {
+      display: block !important;
+      padding: 0 !important;
+    }
+  }
+}
