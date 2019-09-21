@@ -24,11 +24,11 @@ export class HeaderComponent {
   @Output() createMazeEventEmitter: EventEmitter<string> = new EventEmitter();
   @Output() resetEventEmitter: EventEmitter<null> = new EventEmitter();
 
-  private ALGORITHMS = ALGORITHMS;
-  private HEURISTICS = HEURISTICS;
-  private MAZE_TYPES = MAZE_TYPES;
-  private selectedSpeed = 'fast';
-  private selectedAlgorithmName = ALGORITHM_NAMES.DIJIKSTRA;
+  public ALGORITHMS = ALGORITHMS;
+  public HEURISTICS = HEURISTICS;
+  public MAZE_TYPES = MAZE_TYPES;
+  public selectedSpeed = 'fast';
+  public selectedAlgorithmName = ALGORITHM_NAMES.DIJIKSTRA;
 
   public runBoard(): void {
     if (!this.inProgressVisualize) {

@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tutorial.component.css'],
 })
 export class TutorialComponent implements OnInit {
-  private showTutorial = true;
+  public showTutorial = true;
 
-  private currentStepNumber = 1;
-  private isFinish = false;
+  public currentStepNumber = 1;
+  public isFinish = false;
 
   constructor() {}
 
