@@ -1,5 +1,7 @@
 # Pathfinding algorithm Visualizer
 
+see it live here: [Heroku Demo](https://ng8-pathfinder.herokuapp.com/)
+
 Generates an interactive visualization of the algorithm.
 
 ![Alt Text](https://media.giphy.com/media/Q8fjyPnOqQrwSmeju4/giphy.gif)
