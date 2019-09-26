@@ -1,4 +1,4 @@
-# Pathfinding algorithm Visualizer
+# Angular Pathfinding Algorithms Visualizer Tool
 
 see it live here: [Heroku Demo](https://ng8-pathfinder.herokuapp.com/)
 
