@@ -308,6 +308,10 @@ background-position: center;
   position: absolute;
   right: 12%;
   bottom: 2%;
+
+  @media (max-width:480px) {
+    right: 27%;
+}
 }
 
 #skipButton {

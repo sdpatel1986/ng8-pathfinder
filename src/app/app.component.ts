@@ -54,8 +54,10 @@ export class AppComponent implements AfterContentInit {
     const boardDescriptionHeight = this.getBoardDescriptionHeight();
     const innerWidth: number = window.innerWidth;
     const innerHeight: number = window.innerHeight;
-    const height: number = Math.floor(
+    const height: number = (window.innerWidth > 480) ? Math.floor(
       (innerHeight - navbarDivHeight - boardDescriptionHeight) / 28,
+    ): Math.floor(
+      (innerHeight - navbarDivHeight - boardDescriptionHeight) / 15,
     );
     const width: number = Math.floor(innerWidth / 25);
 

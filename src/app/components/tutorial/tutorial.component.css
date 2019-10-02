@@ -1,3 +1,9 @@
+@media only screen and (max-width: 480px) {
+  #tutorial {
+    width: 75%;
+  }
+}
+
 #tutorial-sub {
   width: 100%;
   height: 100%;
