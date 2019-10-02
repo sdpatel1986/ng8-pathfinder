@@ -29,18 +29,18 @@ export class AppComponent implements AfterContentInit {
 
   public board: Board;
   public buttonsOn: boolean;
-  public isAddedBomb = false;
-  public isDisableAddBomb = false;
-  public isDisableWeightNode = false;
-  public algorithmDescription = `Dijkstra's Algorithm is <i><b>weighted</b></i> and <i><b>does not guarantee</b></i> the shortest path!`;
-  public boardAnimationColor =
+  public isAddedBomb: boolean = false;
+  public isDisableAddBomb: boolean = false;
+  public isDisableWeightNode: boolean = false;
+  public algorithmDescription: string = `Dijkstra's Algorithm is <i><b>weighted</b></i> and <i><b>does not guarantee</b></i> the shortest path!`;
+  public boardAnimationColor: string =
     'shortest-path__default visitedobject__default visited__default wall__default';
 
   constructor() {
     this.buttonsOn = true;
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this.initializeMap();
     this.board.currentAlgorithm = ALGORITHMS.DIJIKSTRA;
     this.board.currentHeuristic = null;
@@ -52,12 +52,12 @@ export class AppComponent implements AfterContentInit {
   ): void {
     const navbarDivHeight = this.getNavbarHeight();
     const boardDescriptionHeight = this.getBoardDescriptionHeight();
-    const innerWidth = window.innerWidth;
-    const innerHeight = window.innerHeight;
-    const height = Math.floor(
+    const innerWidth: number = window.innerWidth;
+    const innerHeight: number = window.innerHeight;
+    const height: number = Math.floor(
       (innerHeight - navbarDivHeight - boardDescriptionHeight) / 28,
     );
-    const width = Math.floor(innerWidth / 25);
+    const width: number = Math.floor(innerWidth / 25);
 
     this.board = new Board(height, width);
     this.board.initialise();
@@ -86,7 +86,7 @@ export class AppComponent implements AfterContentInit {
     this.board.clearPath('clickedButton');
   }
 
-  public changeColorEventEmitter(colorObj: any) {
+  public changeColorEventEmitter(colorObj: any): void {
     let className = `shortest-path__${colorObj.shortestPathColor}`;
     className += ` visitedobject__${colorObj.visitedObjectNodeColor}`;
     className += ` visited__${colorObj.visitedNodeColor}`;
@@ -97,7 +97,7 @@ export class AppComponent implements AfterContentInit {
 
   public changeAlgorithm(event: any): void {
     const { algorithm, currentHeuristic } = event;
-    let name = getAlgorithmName(algorithm, currentHeuristic);
+    let name: string = getAlgorithmName(algorithm, currentHeuristic);
     this.board.currentAlgorithm = algorithm;
     this.board.currentHeuristic = currentHeuristic;
     if (algorithm === ALGORITHMS.BFS || algorithm === ALGORITHMS.DFS) {
@@ -105,7 +105,7 @@ export class AppComponent implements AfterContentInit {
       this.isDisableWeightNode = true;
       this.board.clearWeights();
       for (let i = 0; i < 14; i++) {
-        const j = i.toString();
+        const j: string = i.toString();
         const backgroundImage =
           document.styleSheets['1'].rules[j].style.backgroundImage;
         document.styleSheets['1'].rules[
@@ -133,7 +133,7 @@ export class AppComponent implements AfterContentInit {
       }
       this.algorithmDescription = `${name} Algorithm is <i><b>weighted</b></i> and <i><b>does not guarantee</b></i> the shortest path!`;
       for (let i = 0; i < 14; i++) {
-        const j = i.toString();
+        const j: string = i.toString();
         const backgroundImage =
           document.styleSheets['1'].rules[j].style.backgroundImage;
         document.styleSheets['1'].rules[
@@ -162,9 +162,9 @@ export class AppComponent implements AfterContentInit {
   }
 
   public addBomb(): void {
-    const rowNum = Math.floor(this.board.height / 2);
-    const colNum = Math.floor((2 * this.board.width) / 4);
-    const objectNodeId = `${rowNum}-${colNum}`;
+    const rowNum: number = Math.floor(this.board.height / 2);
+    const colNum: number = Math.floor((2 * this.board.width) / 4);
+    const objectNodeId: string = `${rowNum}-${colNum}`;
     if (
       this.board.target === objectNodeId ||
       this.board.start === objectNodeId ||
@@ -182,7 +182,7 @@ export class AppComponent implements AfterContentInit {
   }
 
   public removeBomb(): void {
-    const objectNodeId = this.board.object;
+    const objectNodeId: string = this.board.object;
     this.board.object = null;
     this.board.numberOfObjects = 0;
     this.board.nodes[objectNodeId].status = 'unvisited';

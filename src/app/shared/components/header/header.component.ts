@@ -27,8 +27,8 @@ export class HeaderComponent {
   public ALGORITHMS = ALGORITHMS;
   public HEURISTICS = HEURISTICS;
   public MAZE_TYPES = MAZE_TYPES;
-  public selectedSpeed = 'fast';
-  public selectedAlgorithmName = ALGORITHM_NAMES.DIJIKSTRA;
+  public selectedSpeed: string = 'fast';
+  public selectedAlgorithmName: string = ALGORITHM_NAMES.DIJIKSTRA;
 
   public runBoard(): void {
     if (!this.inProgressVisualize) {
@@ -106,7 +106,7 @@ export class HeaderComponent {
     }
   }
 
-  public reset() {
+  public reset(): void {
     this.resetEventEmitter.emit();
     this.selectedSpeed = 'fast';
     this.selectedAlgorithmName = ALGORITHM_NAMES.DIJIKSTRA;

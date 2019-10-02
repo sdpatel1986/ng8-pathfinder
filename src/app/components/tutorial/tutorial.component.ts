@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tutorial.component.css'],
 })
 export class TutorialComponent implements OnInit {
-  public showTutorial = true;
+  public showTutorial: boolean = true;
 
-  public currentStepNumber = 1;
-  public isFinish = false;
+  public currentStepNumber: number = 1;
+  public isFinish: boolean = false;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   public hideTutorial(): void {
     this.showTutorial = false;

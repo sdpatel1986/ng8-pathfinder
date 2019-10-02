@@ -13,10 +13,10 @@ export class BoardDescriptionComponent {
 
   @Output() changeColorEventEmitter: EventEmitter<object> = new EventEmitter();
 
-  public shortestPathColor = 'default';
-  public visitedNodeColor = 'default';
-  public visitedObjectNodeColor = 'default';
-  public wallColor = 'default';
+  public shortestPathColor: string = 'default';
+  public visitedNodeColor: string = 'default';
+  public visitedObjectNodeColor: string = 'default';
+  public wallColor: string = 'default';
 
   public colorObj = {
     shortestPathColor: this.shortestPathColor,
